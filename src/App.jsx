@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
-import InventoryForm from './components/InventoryForm';
-import InventoryList from './components/InventoryList';
-import './App.css';
+import React, { useState } from "react";
+import InventoryForm from "./components/InventoryForm";
+import InventoryList from "./components/InventoryList";
+import "./App.css";
 
 function App() {
   const [items, setItems] = useState([]);
 
-  const addItem = (item) => {
-    setItems([...items, item]);
-  };
-
-  const deleteItem = (index) => {
-    const newItems = [...items];
-    newItems.splice(index, 1);
-    setItems(newItems);
-  };
+  const handleAddItem = (item) => setItems([...items, item]);
+  const handleDeleteItem = (id) => setItems(items.filter((item) => item.id !== id));
+  const handleEditItem = (itemToEdit) =>
+    setItems(items.filter((item) => item.id !== itemToEdit.id));
 
   return (
-    <div className="container">
+    <div className="app-container">
       <h1>House Inventory Tracker</h1>
-      <InventoryForm onAdd={addItem} />
-      <InventoryList items={items} onDelete={deleteItem} />
+      <InventoryForm onAddItem={handleAddItem} />
+      <InventoryList items={items} onEdit={handleEditItem} onDelete={handleDeleteItem} />
     </div>
   );
 }

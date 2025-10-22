@@ -1,57 +1,124 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
-}
-
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-}
-
-h1 {
+/* 🌿 Main container */
+.app-container {
   text-align: center;
+  padding: 40px 20px;
+  background: #f9fafb;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* 🏠 Title */
+h1 {
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* 🧾 Inventory Form Section */
+.inventory-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-input {
+.inventory-form input {
   padding: 10px;
-  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 160px;
+  transition: 0.2s;
 }
 
-button {
-  padding: 10px;
-  font-size: 1rem;
-  background-color: green;
-  color: white;
+.inventory-form input:focus {
+  border-color: #4caf50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.inventory-form button {
+  padding: 10px 18px;
+  background: #4caf50;
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
+.inventory-form button:hover {
+  background: #45a049;
+}
+
+/* 📋 Inventory Table Section */
 .inventory-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
+  width: 90%;
+  max-width: 750px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px;
 }
 
-.inventory-list li {
-  background: #e3f2fd;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
+}
+
+th {
+  background: #f0f0f0;
+  font-weight: 600;
+  color: #333;
+}
+
+td {
+  color: #555;
+}
+
+/* 🖋️ Action Buttons */
+.edit-btn,
+.delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background: #2196f3;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #1976d2;
+}
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #d32f2f;
+}
+
+/* 🧮 Total Section */
+.total {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #333;
 }

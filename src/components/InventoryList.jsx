@@ -1,20 +1,39 @@
-import React from 'react';
+import React from "react";
 
-function InventoryList({ items, onDelete }) {
-  if (items.length === 0) {
-    return <p>No items in inventory.</p>;
-  }
+export default function InventoryList({ items, onEdit, onDelete }) {
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <ul className="inventory-list">
-      {items.map((item, index) => (
-        <li key={index}>
-          <strong>{item.name}</strong> — {item.quantity} in {item.room}
-          <button onClick={() => onDelete(index)}>❌</button>
-        </li>
-      ))}
-    </ul>
+    <div className="inventory-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.length === 0 ? (
+            <tr>
+              <td colSpan="5">No items added yet</td>
+            </tr>
+          ) : (
+            items.map((item) => (
+              <tr key={item.id}>
+                <td>{item.name}</td>
+                <td>{item.quantity}</td>
+                <td>₱{item.cost.toFixed(2)}</td>
+                <td><button className="edit-btn" onClick={() => onEdit(item)}>Edit</button></td>
+                <td><button className="delete-btn" onClick={() => onDelete(item.id)}>Delete</button></td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+      <p className="total">Total Items: {totalItems}</p>
+    </div>
   );
 }
-
-export default InventoryList;
