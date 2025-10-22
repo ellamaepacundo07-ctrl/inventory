@@ -1,19 +1,15 @@
-/* 🌿 Main container */
 .app-container {
   text-align: center;
   padding: 40px 20px;
-  background: #f9fafb;
+  background: white;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
 }
-
-/* 🏠 Title */
 h1 {
-  color: #333;
-  margin-bottom: 25px;
+  color: black;
+  font-size: 35px;
+  margin-bottom: 30px;
 }
-
-/* 🧾 Inventory Form Section */
 .inventory-form {
   display: flex;
   justify-content: center;
@@ -29,38 +25,23 @@ h1 {
   border-radius: 8px;
   font-size: 14px;
   width: 160px;
-  transition: 0.2s;
-}
-
-.inventory-form input:focus {
-  border-color: #4caf50;
-  outline: none;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
 }
 
 .inventory-form button {
   padding: 10px 18px;
-  background: #4caf50;
+  background: green;
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.2s;
 }
-
-.inventory-form button:hover {
-  background: #45a049;
-}
-
-/* 📋 Inventory Table Section */
 .inventory-list {
   width: 90%;
   max-width: 750px;
   margin: 0 auto;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 15px;
 }
 
@@ -71,61 +52,41 @@ table {
 }
 
 th, td {
-  border: 1px solid #ddd;
+  border: 1px solid black;
   padding: 10px;
   text-align: center;
+  
 }
 
 th {
-  background: #f0f0f0;
+  background: yellowgreen;
   font-weight: 600;
-  color: #333;
 }
 
-td {
-  color: #555;
-}
-
-/* 🖋️ Action Buttons */
 .edit-btn,
 .delete-btn {
   padding: 6px 12px;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
-  transition: 0.2s;
 }
 
 .edit-btn {
-  background: #2196f3;
+  background: blue;
   color: white;
 }
-
-.edit-btn:hover {
-  background: #1976d2;
-}
-
 .delete-btn {
-  background: #f44336;
+  background: red;
   color: white;
 }
-
-.delete-btn:hover {
-  background: #d32f2f;
-}
-
-/* 🧮 Total Section */
 .total-cost {
-  text-align: right;
   font-weight: bold;
   margin-top: 12px;
-  color: #333;
+  color: black;
 }
 
 .total-item {
-  text-align: right;
   font-weight: bold;
-  margin-top: 12px;
-  color: #333;
+  margin-top: 10px;
+  color: black;
 }

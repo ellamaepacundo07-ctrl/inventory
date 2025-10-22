@@ -6,6 +6,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
     (sum, item) => sum + item.quantity * item.cost,
     0
   );
+
   return (
     <div className="inventory-list">
       <table>
@@ -18,6 +19,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
             <th>Delete</th>
           </tr>
         </thead>
+
         <tbody>
           {items.length === 0 ? (
             <tr>
@@ -48,10 +50,12 @@ export default function InventoryList({ items, onEdit, onDelete }) {
         </tbody>
       </table>
 
-      <div className="total-summary">
-      <p className="total-item">Total Items: {totalItems}</p>
-      <p className="total-cost">Total Cost: ₱{totalCost.toFixed(2)}</p>
-    </div>
+      <p className="totalitems">
+        Total Items: {totalItems}
+      <p className="totalcost">
+        Total Cost: ₱{totalCost.toFixed(2)}
+      </p>
+      </p>
     </div>
   );
 }
