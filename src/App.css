@@ -116,7 +116,14 @@ td {
 }
 
 /* 🧮 Total Section */
-.total {
+.total-cost {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #333;
+}
+
+.total-item {
   text-align: right;
   font-weight: bold;
   margin-top: 12px;

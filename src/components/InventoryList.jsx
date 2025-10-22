@@ -2,7 +2,10 @@ import React from "react";
 
 export default function InventoryList({ items, onEdit, onDelete }) {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-
+  const totalCost = items.reduce(
+    (sum, item) => sum + item.quantity * item.cost,
+    0
+  );
   return (
     <div className="inventory-list">
       <table>
@@ -26,14 +29,29 @@ export default function InventoryList({ items, onEdit, onDelete }) {
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
                 <td>₱{item.cost.toFixed(2)}</td>
-                <td><button className="edit-btn" onClick={() => onEdit(item)}>Edit</button></td>
-                <td><button className="delete-btn" onClick={() => onDelete(item.id)}>Delete</button></td>
+                <td>
+                  <button className="edit-btn" onClick={() => onEdit(item)}>
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="delete-btn"
+                    onClick={() => onDelete(item.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))
           )}
         </tbody>
       </table>
-      <p className="total">Total Items: {totalItems}</p>
+
+      <div className="total-summary">
+      <p className="total-item">Total Items: {totalItems}</p>
+      <p className="total-cost">Total Cost: ₱{totalCost.toFixed(2)}</p>
+    </div>
     </div>
   );
 }
