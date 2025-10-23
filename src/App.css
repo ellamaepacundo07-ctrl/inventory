@@ -36,6 +36,9 @@ h1 {
   cursor: pointer;
   font-weight: bold;
 }
+.inventory-form button:hover {
+  background: darkgray;
+}
 .inventory-list {
   width: 90%;
   max-width: 750px;
@@ -51,11 +54,11 @@ table {
   margin-top: 10px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid black;
   padding: 10px;
   text-align: center;
-  
 }
 
 th {
@@ -79,6 +82,20 @@ th {
   background: red;
   color: white;
 }
+.cancel-btn {
+  padding: 10px 18px;
+  background: gray;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cancel-btn:hover {
+  background: darkgray;
+}
+
 .total-cost {
   font-weight: bold;
   margin-top: 12px;
@@ -90,4 +107,3 @@ th {
   margin-top: 10px;
   color: black;
 }
-

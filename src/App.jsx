@@ -7,6 +7,15 @@ function App() {
   // localStorage para save sa inventorylist  //
   const [items, setItems] = useState(() => {
     const savedItems = localStorage.getItem("inventoryItems");
+    if (savedItems) {
+      const parsed = JSON.parse(savedItems);
+      return parsed.map((item) => ({
+        ...item,
+        quantity: Number(item.quantity),
+        cost: Number(item.cost),
+      }));
+    }
+
     return savedItems ? JSON.parse(savedItems) : [];
   });
   // Save items og maalisdan  //
@@ -36,6 +45,10 @@ function App() {
     );
     setEditingItem(null); // clear edit mode
   };
+  //  Cancel editing
+  const handleCancelEdit = () => {
+    setEditingItem(null);
+  };
 
   return (
     <div className="app-container">
@@ -44,6 +57,7 @@ function App() {
         onAddItem={handleAddItem}
         onUpdateItem={handleUpdateItem}
         editingItem={editingItem}
+        onCancelEdit={handleCancelEdit}
       />
       <InventoryList
         items={items}

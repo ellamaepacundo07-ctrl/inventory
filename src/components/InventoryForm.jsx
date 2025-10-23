@@ -4,6 +4,7 @@ export default function InventoryForm({
   onAddItem,
   onUpdateItem,
   editingItem,
+  onCancelEdit,
 }) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -50,7 +51,7 @@ export default function InventoryForm({
       onAddItem(newItem);
     }
 
-    // Clear fields after submit
+    // Clear form after maka submit //
     setName("");
     setQuantity("");
     setCost("");
@@ -77,6 +78,9 @@ export default function InventoryForm({
         onChange={(e) => setCost(e.target.value)}
       />
       <button type="submit">{editingItem ? "Update Item" : "Add Item"}</button>
+      <button type="button" className="cancel-btn" onClick={onCancelEdit}>
+        Cancel
+      </button>
     </form>
   );
 }
