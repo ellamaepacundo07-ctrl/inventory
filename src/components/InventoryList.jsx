@@ -9,7 +9,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
 
   return (
     <div className="inventory-list">
-      <table>
+      <table> 
         <thead>
           <tr>
             <th>Name</th>
