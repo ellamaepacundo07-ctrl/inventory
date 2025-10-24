@@ -38,7 +38,14 @@ export default function InventoryList({ items, onEdit, onDelete }) {
                 <td>
                   <button
                     className="delete-btn"
-                    onClick={() => onDelete(item.id)}
+                    onClick={() => {
+                      const confirmDelete = window.confirm(
+                        `Are you sure you want to delete "${item.name}" ?`
+                      );
+                      if (confirmDelete) {
+                        onDelete(item.id);
+                      }
+                    }}
                   >
                     Delete
                   </button>
