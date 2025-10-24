@@ -1,64 +1,76 @@
 import React, { useState, useEffect } from "react";
 import InventoryForm from "./components/InventoryForm";
 import InventoryList from "./components/InventoryList";
+import InventorySummary from "./components/InventorySummary";
 import "./App.css";
 
 function App() {
-  // localStorage para save sa inventorylist  //
+  // Load inventory from localStorage
   const [items, setItems] = useState(() => {
     const savedItems = localStorage.getItem("inventoryItems");
-    if (savedItems) {
-      const parsed = JSON.parse(savedItems);
-      return parsed.map((item) => ({
-        ...item,
-        quantity: Number(item.quantity),
-        cost: Number(item.cost),
-      }));
-    }
+    if (!savedItems) return [];
 
-    return savedItems ? JSON.parse(savedItems) : [];
+    const parsed = JSON.parse(savedItems);
+    return parsed.map((item) => ({
+      ...item,
+      quantity: Number(item.quantity) || 0,
+      cost: Number(item.cost) || 0,
+    }));
   });
-  // Save items og maalisdan  //
+
+  // Clean old localStorage data on first load (optional)
+  useEffect(() => {
+    const saved = localStorage.getItem("inventoryItems");
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      const cleaned = parsed.map((item) => ({
+        ...item,
+        quantity: Number(item.quantity) || 0,
+        cost: Number(item.cost) || 0,
+      }));
+      localStorage.setItem("inventoryItems", JSON.stringify(cleaned));
+    }
+  }, []);
+
+  // Save items to localStorage when changed
   useEffect(() => {
     localStorage.setItem("inventoryItems", JSON.stringify(items));
   }, [items]);
 
-  // pag mag add new item //
+  // Add new item
   const handleAddItem = (item) => setItems([...items, item]);
 
-  // Delete item //
+  // Delete item
   const handleDeleteItem = (id) =>
     setItems(items.filter((item) => item.id !== id));
 
-  // STATE STATE STATE for editing //
+  // Edit item logic
   const [editingItem, setEditingItem] = useState(null);
 
-  // Start PAG MAG EDIT, BEFORE SAVE EDITED ITEM //
-  const handleEditItem = (item) => {
-    setEditingItem(item);
-  };
+  const handleEditItem = (item) => setEditingItem(item);
 
-  // Save edited item //
   const handleUpdateItem = (updatedItem) => {
     setItems(
       items.map((item) => (item.id === updatedItem.id ? updatedItem : item))
     );
-    setEditingItem(null); // clear edit mode
-  };
-  //  Cancel editing
-  const handleCancelEdit = () => {
     setEditingItem(null);
   };
+
+  const handleCancelEdit = () => setEditingItem(null);
 
   return (
     <div className="app-container">
       <h1>House Inventory Tracker</h1>
+
       <InventoryForm
         onAddItem={handleAddItem}
         onUpdateItem={handleUpdateItem}
         editingItem={editingItem}
         onCancelEdit={handleCancelEdit}
       />
+
+      <InventorySummary items={items} />
+
       <InventoryList
         items={items}
         onEdit={handleEditItem}

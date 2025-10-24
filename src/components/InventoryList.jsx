@@ -1,12 +1,6 @@
 import React from "react";
 
 export default function InventoryList({ items, onEdit, onDelete }) {
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalCost = items.reduce(
-  (sum, item) => sum + Number(item.quantity) * Number(item.cost),
-  0
-);
-
   return (
     <div className="inventory-list">
       <table>
@@ -14,7 +8,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
           <tr>
             <th>Name</th>
             <th>Quantity</th>
-            <th>Cost</th>
+            <th>Cost (₱)</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -30,7 +24,12 @@ export default function InventoryList({ items, onEdit, onDelete }) {
               <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
-                <td>₱{item.cost.toFixed(2)}</td>
+                <td>
+                  ₱
+                  {Number(item.cost).toLocaleString("en-PH", {
+                    minimumFractionDigits: 2,
+                  })}
+                </td>
                 <td>
                   <button className="edit-btn" onClick={() => onEdit(item)}>
                     Edit
@@ -49,12 +48,6 @@ export default function InventoryList({ items, onEdit, onDelete }) {
           )}
         </tbody>
       </table>
-      {items.length > 0 && (
-        <div className="totals">
-          <p className="totalitems">Total Items: {totalItems}</p>
-          <p className="totalcost">Total Cost: ₱{totalCost.toFixed(2)}</p>
-        </div>
-      )}
     </div>
   );
 }

@@ -36,8 +36,8 @@ export default function InventoryForm({
       const updatedItem = {
         ...editingItem,
         name,
-        quantity: parseInt(quantity),
-        cost: parseFloat(cost),
+        quantity: Number(quantity) || 0,
+        cost: Number(cost) || 0,
       };
       onUpdateItem(updatedItem);
     } else {
@@ -45,8 +45,8 @@ export default function InventoryForm({
       const newItem = {
         id: Date.now(),
         name,
-        quantity: parseInt(quantity),
-        cost: parseFloat(cost),
+        quantity: Number(quantity) || 0,
+        cost: Number(cost) || 0,
       };
       onAddItem(newItem);
     }
