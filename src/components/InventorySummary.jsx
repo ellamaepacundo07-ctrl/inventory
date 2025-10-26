@@ -9,24 +9,31 @@ export default function InventorySummary({ items }) {
     );
   }
 
-  // Compute totals safely
-  const totalItems = items.reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
-  const totalCost = items.reduce((sum, item) => {
-    const qty = Number(item.quantity) || 0;
-    const cost = Number(item.cost) || 0;
-    return sum + qty * cost;
-  }, 0);
+  const totalItems = items.reduce(
+    (sum, item) => sum + (Number(item.quantity) || 0),
+    0
+  );
+
+  // "Cost" means total cost per item entry
+  const totalCost = items.reduce(
+    (sum, item) => sum + (Number(item.cost) || 0),
+    0
+  );
+
   const uniqueProducts = items.length;
 
   return (
     <div className="inventory-summary">
-      <h3> Inventory Summary</h3>
-      <p><strong>Total Products:</strong> {uniqueProducts}</p>
-      <p><strong>Total Items:</strong> {totalItems}</p>
+      <h3>Inventory Summary</h3>
       <p>
-        <strong>Total Cost:</strong>{" "}
-        ₱{totalCost.toLocaleString("en-PH", { minimumFractionDigits: 2 })}
+        <strong>Total Products:</strong> {uniqueProducts}
       </p>
-    </div>
+      <p>
+        <strong>Total Items:</strong> {totalItems}
+      </p>
+      <p>
+        <strong>Total Cost:</strong> ₱{totalCost.toLocaleString("en-PH")}
+      </p>
+    </div>    
   );
 }

@@ -9,6 +9,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
             <th>Name</th>
             <th>Quantity</th>
             <th>Cost (₱)</th>
+            <th>Date Added</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -24,12 +25,8 @@ export default function InventoryList({ items, onEdit, onDelete }) {
               <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
-                <td>
-                  ₱
-                  {Number(item.cost).toLocaleString("en-PH", {
-                    minimumFractionDigits: 2,
-                  })}
-                </td>
+                <td>₱{Number(item.cost).toLocaleString("en-PH", {})}</td>
+                <td>{item.dateAdded}</td>
                 <td>
                   <button className="edit-btn" onClick={() => onEdit(item)}>
                     Edit

@@ -126,3 +126,12 @@ th {
   margin: 5px 0;
   font-size: 1rem;
 }
+.inventory-date {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+.inventory-list td:nth-child(4) {
+  color: #555;
+  font-size: 0.9em;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import InventoryForm from "./components/InventoryForm";
 import InventoryList from "./components/InventoryList";
 import InventorySummary from "./components/InventorySummary";
+import InventoryDate from "./components/InventoryDate";
 import "./App.css";
 
 function App() {
@@ -61,6 +62,8 @@ function App() {
   return (
     <div className="app-container">
       <h1>House Inventory Tracker</h1>
+
+      <InventoryDate />
 
       <InventoryForm
         onAddItem={handleAddItem}

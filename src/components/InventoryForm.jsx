@@ -41,13 +41,19 @@ export default function InventoryForm({
       };
       onUpdateItem(updatedItem);
     } else {
-      // Add new item
       const newItem = {
         id: Date.now(),
         name,
         quantity: Number(quantity) || 0,
         cost: Number(cost) || 0,
+        dateAdded: new Date().toLocaleString("en-PH", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+}),
+
       };
+
       onAddItem(newItem);
     }
 
