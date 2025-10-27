@@ -6,7 +6,6 @@ import InventoryDate from "./components/InventoryDate";
 import "./App.css";
 
 function App() {
-  // Load inventory from localStorage
   const [items, setItems] = useState(() => {
     const savedItems = localStorage.getItem("inventoryItems");
     if (!savedItems) return [];
@@ -18,8 +17,6 @@ function App() {
       cost: Number(item.cost) || 0,
     }));
   });
-
-  // Clean old localStorage data on first load (optional)
   useEffect(() => {
     const saved = localStorage.getItem("inventoryItems");
     if (saved) {
@@ -33,19 +30,15 @@ function App() {
     }
   }, []);
 
-  // Save items to localStorage when changed
   useEffect(() => {
     localStorage.setItem("inventoryItems", JSON.stringify(items));
   }, [items]);
 
-  // Add new item
   const handleAddItem = (item) => setItems([...items, item]);
 
-  // Delete item
   const handleDeleteItem = (id) =>
     setItems(items.filter((item) => item.id !== id));
 
-  // Edit item logic
   const [editingItem, setEditingItem] = useState(null);
 
   const handleEditItem = (item) => setEditingItem(item);

@@ -13,8 +13,6 @@ export default function InventorySummary({ items }) {
     (sum, item) => sum + (Number(item.quantity) || 0),
     0
   );
-
-  // "Cost" means total cost per item entry
   const totalCost = items.reduce(
     (sum, item) => sum + (Number(item.cost) || 0),
     0

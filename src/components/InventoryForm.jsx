@@ -10,7 +10,6 @@ export default function InventoryForm({
   const [quantity, setQuantity] = useState("");
   const [cost, setCost] = useState("");
 
-  // Fill form when editing
   useEffect(() => {
     if (editingItem) {
       setName(editingItem.name);
@@ -32,7 +31,6 @@ export default function InventoryForm({
     }
 
     if (editingItem) {
-      // Update existing item
       const updatedItem = {
         ...editingItem,
         name,
@@ -56,8 +54,6 @@ export default function InventoryForm({
 
       onAddItem(newItem);
     }
-
-    // Clear form after maka submit //
     setName("");
     setQuantity("");
     setCost("");
