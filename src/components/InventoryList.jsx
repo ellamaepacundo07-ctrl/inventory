@@ -18,7 +18,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
         <tbody>
           {items.length === 0 ? (
             <tr>
-              <td colSpan="5">No items added yet</td>
+              <td colSpan="6">No items added yet</td>
             </tr>
           ) : (
             items.map((item) => (
