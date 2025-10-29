@@ -1,6 +1,9 @@
 import React from "react";
 
 export default function InventoryList({ items, onEdit, onDelete }) {
+  const totalQuantity = items.reduce((sum, item) => sum + Number(item.quantity), 0);
+  const totalCost = items.reduce((sum, item) => sum + Number(item.cost), 0);
+
   return (
     <div className="inventory-list">
       <table>
@@ -25,7 +28,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
               <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
-                <td>₱{Number(item.cost).toLocaleString("en-PH", {})}</td>
+                <td>₱{Number(item.cost).toLocaleString("en-PH")}</td>
                 <td>{item.dateAdded}</td>
                 <td>
                   <button className="edit-btn" onClick={() => onEdit(item)}>
@@ -37,7 +40,7 @@ export default function InventoryList({ items, onEdit, onDelete }) {
                     className="delete-btn"
                     onClick={() => {
                       const confirmDelete = window.confirm(
-                        `Are you sure you want to delete "${item.name}" ?`
+                        `Are you sure you want to delete "${item.name}"?`
                       );
                       if (confirmDelete) {
                         onDelete(item.id);
@@ -49,6 +52,15 @@ export default function InventoryList({ items, onEdit, onDelete }) {
                 </td>
               </tr>
             ))
+          )}
+
+          {items.length > 0 && (
+            <tr className="total-row">
+              <td>Total</td>
+              <td>{totalQuantity}</td>
+              <td>₱{totalCost.toLocaleString("en-PH")}</td>
+              <td colSpan="3"></td>
+            </tr>
           )}
         </tbody>
       </table>
