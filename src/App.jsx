@@ -3,7 +3,7 @@ import InventoryForm from "./components/InventoryForm";
 import InventoryList from "./components/InventoryList";
 import InventorySummary from "./components/InventorySummary";
 import InventoryDate from "./components/InventoryDate";
-import InventoryRecords from "./components/InventoryRecords"; // <-- new import
+import InventoryRecords from "./components/InventoryRecords";
 import "./App.css";
 
 function App() {
@@ -43,26 +43,33 @@ function App() {
     <div className="app-container">
       <h1>House Inventory Tracker</h1>
       <InventoryDate />
+
       <button
         className="records-btn"
         onClick={() => setShowRecords(!showRecords)}
       >
-        {showRecords ? "Hide Records" : "Show Records"}
+        {showRecords ? "Back to Inventory" : "Show Records"}
       </button>
-      {showRecords && <InventoryRecords items={items} />}{" "}
-      {/* Use the new file */}
-      <InventoryForm
-        onAddItem={handleAddItem}
-        onUpdateItem={handleUpdateItem}
-        editingItem={editingItem}
-        onCancelEdit={handleCancelEdit}
-      />
-      <InventorySummary items={items} />
-      <InventoryList
-        items={items}
-        onEdit={handleEditItem}
-        onDelete={handleDeleteItem}
-      />
+
+      {/* When showRecords is true, show only records */}
+      {showRecords ? (
+        <InventoryRecords items={items} />
+      ) : (
+        <>
+          <InventoryForm
+            onAddItem={handleAddItem}
+            onUpdateItem={handleUpdateItem}
+            editingItem={editingItem}
+            onCancelEdit={handleCancelEdit}
+          />
+          <InventorySummary items={items} />
+          <InventoryList
+            items={items}
+            onEdit={handleEditItem}
+            onDelete={handleDeleteItem}
+          />
+        </>
+      )}
     </div>
   );
 }
