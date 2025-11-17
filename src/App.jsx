@@ -51,7 +51,6 @@ function App() {
         {showRecords ? "Back to Inventory" : "Show Records"}
       </button>
 
-      {/* When showRecords is true, show only records */}
       {showRecords ? (
         <InventoryRecords items={items} />
       ) : (

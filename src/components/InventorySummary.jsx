@@ -1,4 +1,5 @@
 import React from "react";
+import "./InventorySummary.css";
 
 export default function InventorySummary({ items }) {
   if (!items || items.length === 0) {

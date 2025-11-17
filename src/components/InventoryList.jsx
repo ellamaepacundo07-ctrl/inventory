@@ -1,4 +1,5 @@
 import React from "react";
+import "./InventoryList.css";
 
 export default function InventoryList({ items, onEdit, onDelete }) {
   const totalQuantity = items.reduce((sum, item) => sum + Number(item.quantity), 0);

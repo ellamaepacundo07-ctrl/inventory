@@ -1,4 +1,5 @@
 import React from "react";
+import "./InventoryDate.css";
 
 export default function InventoryDate() {
   const currentDate = new Date();
